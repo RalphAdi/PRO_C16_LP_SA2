@@ -98,6 +98,7 @@ function draw() {
     //jump when the space key is pressed
     if(keyDown("space")&& trex.y >= 100) {
         trex.velocityY = -12;
+        jumpSound.play();
     }
     
     //add gravity
@@ -110,7 +111,10 @@ function draw() {
     spawnObstacles();
     
     if(obstaclesGroup.isTouching(trex)){
-        gameState = END;
+      trex.velocityY = -12;
+        jumpSound.play();
+      gameState = END;
+      dieSound.play();
     }
   }
    else if (gameState === END) {
